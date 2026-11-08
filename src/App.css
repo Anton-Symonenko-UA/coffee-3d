@@ -1,21 +1,119 @@
-main {
+.hero {
   min-height: 100vh;
-  padding: 48px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 64px 48px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+}
+
+.hero-content {
+  min-width: 0;
+}
+
+.eyebrow {
+  margin: 0 0 20px;
+  color: #c98b59;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
 }
 
 h1 {
-  margin: 0 0 16px;
-  font-size: 64px;
+  margin: 0 0 24px;
+  font-size: clamp(40px, 5vw, 72px);
+  line-height: 1.05;
 }
 
-p {
-  margin: 0;
-  font-size: 20px;
+.hero-description {
+  max-width: 380px;
+  margin: 0 0 32px;
   color: #c9b8a8;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.menu-button {
+  display: inline-block;
+  padding: 16px 24px;
+  border-radius: 999px;
+  background-color: #c98b59;
+  color: #17120f;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.menu-button:hover {
+  background-color: #dda16f;
 }
 
 .scene {
   width: 100%;
-  height: 420px;
-  margin-top: 32px;
+  min-width: 0;
+  height: 480px;
+}
+
+@media (max-width: 760px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 40px 24px;
+    gap: 16px;
+  }
+
+  .scene {
+    height: 340px;
+  }
+}
+.menu {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 80px 48px;
+}
+
+.menu h2 {
+  margin: 0 0 40px;
+  font-size: clamp(32px, 4vw, 48px);
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.menu-card {
+  padding: 32px;
+  border: 1px solid #49382b;
+  border-radius: 20px;
+  background-color: #211914;
+}
+
+.menu-card h3 {
+  margin: 0 0 16px;
+  font-size: 24px;
+}
+
+.menu-card p {
+  margin: 0 0 24px;
+  color: #c9b8a8;
+  line-height: 1.6;
+}
+
+.menu-price {
+  color: #c98b59;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+@media (max-width: 760px) {
+  .menu {
+    padding: 56px 24px;
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
 }
