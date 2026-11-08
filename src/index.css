@@ -6,6 +6,9 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   background-color: #17120f;
+    background-image: radial-gradient(ellipse at 75% 25%,
+        #38271c 0%,
+        #17120f 60%);
   color: #fff8ef;
 }
 
