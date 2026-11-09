@@ -2,8 +2,9 @@ import { useEffect, useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Center, Resize, useGLTF } from "@react-three/drei";
 
-function CoffeeCup({ cupColor, isRotating }) {
+function CoffeeCup({ cupColor, isRotating, scrollTurn }) {
   const cupRef = useRef();
+  const autoRotation = useRef(0);
   const { scene } = useGLTF("/models/coffeecup.glb");
 
   const model = useMemo(() => {
@@ -61,10 +62,14 @@ function CoffeeCup({ cupColor, isRotating }) {
     };
   }, [model]);
 
-  useFrame((state, delta) => {
-    if (isRotating && cupRef.current) {
-      cupRef.current.rotation.y += delta * 0.3;
+  useFrame((_, delta) => {
+    if (!cupRef.current) return;
+
+    if (isRotating) {
+      autoRotation.current += delta * 0.3;
     }
+
+    cupRef.current.rotation.y = autoRotation.current + scrollTurn.current;
   });
 
   return (
