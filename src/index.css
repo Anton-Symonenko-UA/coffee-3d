@@ -1,18 +1,110 @@
+:root {
+  --bg: #120d0a;
+  --bg-raised: #1a1310;
+  --surface: #211813;
+  --surface-2: #2a1f18;
+  --line: rgba(255, 236, 214, 0.1);
+  --line-strong: rgba(255, 236, 214, 0.2);
+  --text: #f7ede2;
+  --muted: #b9a594;
+  --faint: #7d6b5d;
+  --accent: #d4925a;
+  --accent-bright: #f0b47c;
+  --accent-ink: #1b120c;
+
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --gutter: clamp(16px, 4vw, 48px);
+  --max: 1320px;
+
+  color-scheme: dark;
+}
+
 * {
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #17120f;
-    background-image: radial-gradient(ellipse at 75% 25%,
-        #38271c 0%,
-        #17120f 60%);
-  color: #fff8ef;
+html {
+  scroll-behavior: smooth;
+  overscroll-behavior: none;
+  -webkit-text-size-adjust: 100%;
 }
 
-html {
-  overscroll-behavior: none;
-  scroll-behavior: smooth;
+html.is-loading {
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(60vw 60vw at 78% 18%, rgba(212, 146, 90, 0.18), transparent 60%),
+    radial-gradient(50vw 50vw at 10% 90%, rgba(120, 60, 30, 0.14), transparent 60%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-bright);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+html.has-custom-cursor,
+html.has-custom-cursor a,
+html.has-custom-cursor button,
+html.has-custom-cursor [data-cursor] {
+  cursor: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }
